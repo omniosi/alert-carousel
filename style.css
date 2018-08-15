@@ -8,6 +8,9 @@
   opacity: 0.5;
   pointer-events: none
 }
+.hide{
+  display: none !important;
+}
 .alertarea{
   display: block
 }

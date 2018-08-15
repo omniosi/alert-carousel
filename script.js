@@ -1,3 +1,4 @@
+var allalerts = document.getElementsByClassName('alertarea')[0]
 var cont = document.getElementsByClassName('container')[0]
 var all = document.getElementsByClassName('alerts')[0]
 var current = document.getElementsByClassName('current')[0]
@@ -26,8 +27,9 @@ loadJSON(function(response) {
   console.log('jsonresponse = ', jsonresponse);
 
   all.innerHTML = jsonresponse.map(r => {
-    return '<li class="'+r.type+'"><span class="message">'+r.message+'</span><button><i class="fas fa-times-circle"></i></button></li>'
+    return '<li class="'+r.type+'"><span class="message">'+r.message+'</span><button class="close" onclick="closeAlert(event)"><i class="fas fa-times-circle"></i></button></li>'
   }).join('')
+  return jsonresponse
 });
 
 function prev(){
@@ -71,10 +73,23 @@ function reset(){
 }
 function init(){
   // current.innerHTML = slide
-  numUpd(slide)
+  numUpd(1)
   total.innerHTML = all.children.length
   pBtn.classList.add('disabled')
   nBtn.classList.remove('disabled')
+}
+function closeAlert(event){
+  console.log('closeAlert called!')
+  // event.target.closest('li').classList.add('disabled')
+  event.target.closest('li').classList.add('hide')
+  total.innerHTML--
+  prev()
+  exit()
+}
+function exit(){
+  if(Number(total.innerHTML) == 0){
+    allalerts.classList.add('hide')
+  }
 }
 
 pBtn.addEventListener('click',prev)
