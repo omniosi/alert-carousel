@@ -4,6 +4,10 @@
   box-sizing: border-box;
   font: 16px/14px sans-serif;
 }
+.disabled{
+  opacity: 0.5;
+  pointer-events: none
+}
 .alertarea{
   display: block
 }
