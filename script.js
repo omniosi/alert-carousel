@@ -38,10 +38,12 @@ function prev(){
     all.style.left !== "0px" && 
     all.style.left !== ""
   ){
-    slide -= 1
-    current.innerHTML = slide
+    // slide -= 1
+    slide--
     pBtn.classList.remove('disabled')
     all.style.left = Number(all.style.left.slice(0,-2)) + all.offsetWidth/all.children.length + 'px'
+    // current.innerHTML = slide
+    numUpd(slide)
   }
 }
 function next(){
@@ -51,11 +53,16 @@ function next(){
   if(
     all.style.left !== "-" + (all.offsetWidth - all.offsetWidth/all.children.length) + "px"
   ){
-    slide += 1
-    current.innerHTML = slide
+    // slide += 1
+    slide++
     nBtn.classList.remove('disabled')
     all.style.left = Number(all.style.left.slice(0,-2)) - all.offsetWidth/all.children.length + 'px'
+    // current.innerHTML = slide
+    numUpd(slide)
   }
+}
+function numUpd(num){
+  current.innerHTML = num
 }
 function reset(){
   // console.log('resize event fired!')
@@ -63,7 +70,8 @@ function reset(){
   init()
 }
 function init(){
-  current.innerHTML = slide
+  // current.innerHTML = slide
+  numUpd(slide)
   total.innerHTML = all.children.length
   pBtn.classList.add('disabled')
   nBtn.classList.remove('disabled')

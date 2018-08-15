@@ -1,16 +1,21 @@
 [{
+  "index":1,
   "message":"Alerter One",
   "type": "info"
 },{
+  "index":2,
   "message":"Alerter Two",
   "type": "info"
 },{
+  "index":3,
   "message":"Alerter Three",
   "type": "mac"
 },{
+  "index":4,
   "message":"Alerter Four",
   "type": "windows"
 },{
+  "index":5,
   "message":"Alerter Five",
   "type": "warning"
 }]
