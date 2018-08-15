@@ -56,9 +56,11 @@ function next(){
     all.style.left !== "-" + (all.offsetWidth - all.offsetWidth/all.children.length) + "px"
   ){
     // slide += 1
-    slide++
-    nBtn.classList.remove('disabled')
-    all.style.left = Number(all.style.left.slice(0,-2)) - all.offsetWidth/all.children.length + 'px'
+    if(slide != Number(total.innerHTML) ){
+      slide++
+      all.style.left = Number(all.style.left.slice(0,-2)) - all.offsetWidth/all.children.length + 'px'
+      nBtn.classList.remove('disabled')
+    }
     // current.innerHTML = slide
     numUpd(slide)
   }
@@ -66,21 +68,19 @@ function next(){
 function numUpd(num){
   current.innerHTML = num
 }
-function reset(){
-  // console.log('resize event fired!')
-  all.style.left = "0px"
-  init()
-}
 function init(){
   // current.innerHTML = slide
   numUpd(1)
   total.innerHTML = all.children.length
+  Array.prototype.map.call(all.getElementsByTagName('li'),function(m) {
+    return m.classList.remove('hide')
+  })
+  all.style.left = "0px"
   pBtn.classList.add('disabled')
   nBtn.classList.remove('disabled')
 }
 function closeAlert(event){
   console.log('closeAlert called!')
-  // event.target.closest('li').classList.add('disabled')
   event.target.closest('li').classList.add('hide')
   total.innerHTML--
   prev()
@@ -94,6 +94,6 @@ function exit(){
 
 pBtn.addEventListener('click',prev)
 nBtn.addEventListener('click',next)
-window.addEventListener('resize',reset)
+window.addEventListener('resize',init)
 
 init()
