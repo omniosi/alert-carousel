@@ -5,6 +5,30 @@ var total = document.getElementsByClassName('total')[0]
 var pBtn = document.getElementsByClassName('prev')[0]
 var nBtn = document.getElementsByClassName('next')[0]
 var slide = 1
+var dataURL = 'data.json'
+
+function loadJSON(callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.overrideMimeType("application/json");
+  xhr.open('GET', 'data.json', true);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == "200") {
+      // .open will NOT return a value but simply returns undefined in async mode so use a callback
+      callback(xhr.responseText);
+    }
+  }
+  xhr.send(null);
+}
+
+// Call to function with anonymous callback
+loadJSON(function(response) {
+  jsonresponse = JSON.parse(response);
+  console.log('jsonresponse = ', jsonresponse);
+
+  all.innerHTML = jsonresponse.map(r => {
+    return '<li class="'+r.type+'"><span class="message">'+r.message+'</span><button><i class="fas fa-times-circle"></i></button></li>'
+  }).join('')
+});
 
 function prev(){
   // console.log('prev button clicked!')
@@ -43,7 +67,6 @@ function init(){
   total.innerHTML = all.children.length
   pBtn.classList.add('disabled')
   nBtn.classList.remove('disabled')
-  // nBtn.classList.remove('disabled')
 }
 
 pBtn.addEventListener('click',prev)

@@ -45,6 +45,7 @@ ul li{
   width: 20%;
   position: relative;
 }
+button,
 span.container{
   border: grey solid 1px;
 }

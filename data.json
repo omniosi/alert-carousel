@@ -1,0 +1,16 @@
+[{
+  "message":"Alerter One",
+  "type": "info"
+},{
+  "message":"Alerter Two",
+  "type": "info"
+},{
+  "message":"Alerter Three",
+  "type": "mac"
+},{
+  "message":"Alerter Four",
+  "type": "windows"
+},{
+  "message":"Alerter Five",
+  "type": "warning"
+}]
