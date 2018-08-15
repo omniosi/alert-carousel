@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Alerts</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css">
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    
+    <!-- Don’t use this in production: -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      // const app = <div><button><i className="fas fa-arrow-alt-circle-left prev"></i></button><button><i className="fas fa-arrow-alt-circle-right next"></i></button><span className="num">0</span><ul className="alerts"><li>Alert One</li><li>Alert Two</li><li>Alert Three</li><li>Alert Four</li><li>Alert Five</li></ul><button><i className="fas fa-times-circle"></i></button></div>
+      const app = <div><Abutton name="prev" icon="arrow-alt-circle-left" /><Abutton name="next" icon="arrow-alt-circle-right" /><span className="num">0</span><ul className="alerts">{data.map((m) => <Alert message={m.message} />)}<Alert  /><Alert  /><Alert  /><Alert  /><Alert  /></ul></div>
+
+      function Abutton(props){
+        return <button><i className={'fas fa-'+props.icon + ' ' + props.name}></i></button>
+      }
+      function Alert(props){
+        return <li>{props.message}<Abutton name="close" icon="times-circle" /></li>
+      }
+      const data = [{
+        message: "Alert One"
+      },{
+        message: "Alert Two"
+      },{
+        message: "Alert Three"
+      },{
+        message: "Alert Four"
+      },{
+        message: "Alert Five"
+      }]
+
+      ReactDOM.render( app, document.getElementById('root') )
+    </script>
+    <!--
+      Note: this page is a great way to try React but it’s not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this section for a production-ready setup with JSX:
+      http://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
+
+      In a larger project, you can use an integrated toolchain that includes JSX instead:
+      http://reactjs.org/docs/create-a-new-react-app.html
+
+      You can also use React without JSX, in which case you can remove Babel:
+      https://reactjs.org/docs/react-without-jsx.html
+    -->
+  </body>
+</html>
