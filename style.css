@@ -28,7 +28,6 @@ span.container{
   padding: 0;
 }
 span.container{
-  /* width: calc(100% - 34px - 34px - 34px); */
   width: calc(100% - 34px - 34px - 55px);
   height: 34px;
   overflow: hidden;
@@ -58,7 +57,6 @@ button{
 span.num{
   display: inline-block;
   text-align: center;
-  /* width: 34px; */
   width: 55px;
 }
 .alerts li .message,
